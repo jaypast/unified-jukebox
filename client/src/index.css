@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+  
+  /* Jukebox specific colors */
+  --electric-blue: hsl(180, 100%, 50%);
+  --neon-pink: hsl(300, 100%, 50%);
+  --space-gray: hsl(0, 0%, 10%);
+  --bright-green: hsl(120, 100%, 50%);
+  --deep-purple: hsl(260, 52%, 47%);
+  --neon-orange: hsl(30, 100%, 50%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply antialiased bg-space-gray text-foreground;
+    font-family: 'Inter', sans-serif;
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+  }
+
+  .font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .neon-border {
+    @apply border-2 border-transparent rounded-xl;
+    background: linear-gradient(45deg, #00FFFF, #FF00FF) border-box;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  }
+  
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+  
+  .holographic-bg {
+    background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+    backdrop-filter: blur(10px);
+  }
+  
+  .queue-item {
+    @apply transition-all duration-300 border-l-4 border-transparent;
+  }
+  
+  .queue-item:hover {
+    @apply translate-x-2;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+  }
+  
+  .queue-item.playing {
+    @apply border-l-4;
+    border-left-color: #00FF00;
+    background: linear-gradient(90deg, rgba(0, 255, 0, 0.1), transparent);
+  }
+  
+  .progress-bar {
+    background: linear-gradient(90deg, #00FFFF, #FF00FF);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .floating {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .electric-blue {
+    color: #00FFFF;
+  }
+  
+  .neon-pink {
+    color: #FF00FF;
+  }
+  
+  .space-gray {
+    color: #1A1A1A;
+  }
+  
+  .bright-green {
+    color: #00FF00;
+  }
+  
+  .bg-electric-blue {
+    background-color: #00FFFF;
+  }
+  
+  .bg-neon-pink {
+    background-color: #FF00FF;
+  }
+  
+  .bg-space-gray {
+    background-color: #1A1A1A;
+  }
+  
+  .bg-bright-green {
+    background-color: #00FF00;
+  }
+  
+  .border-electric-blue {
+    border-color: #00FFFF;
+  }
+  
+  .border-neon-pink {
+    border-color: #FF00FF;
+  }
+  
+  .border-bright-green {
+    border-color: #00FF00;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px #00FFFF, 0 0 40px #00FFFF, 0 0 60px #00FFFF;
+  }
+  50% { 
+    box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px #00FFFF;
+  }
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes glow {
+  from { 
+    text-shadow: 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF;
+  }
+  to { 
+    text-shadow: 0 0 30px #FF00FF, 0 0 40px #FF00FF, 0 0 50px #FF00FF;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Touch-friendly sizing for tablet interfaces */
+@media (max-width: 1024px) {
+  .touch-target {
+    @apply min-h-12 min-w-12;
+  }
+  
+  .search-input {
+    @apply h-14 text-lg;
+  }
+  
+  .queue-item {
+    @apply p-4;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #00FFFF, #FF00FF);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #FF00FF, #00FFFF);
+}
